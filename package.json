@@ -1,0 +1,18 @@
+{
+  "name": "litespringer",
+  "version": "1.0.0",
+  "description": "liteSpringerApp",
+  "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html"
+  },
+  "author": "Divya D Pai",
+  "license": "ISC",
+  "dependencies": {
+    "parcel": "^2.9.3"
+  },
+  "devDependencies": {
+    "core-js": "^3.32.0",
+    "regenerator-runtime": "^0.13.11"
+  }
+}

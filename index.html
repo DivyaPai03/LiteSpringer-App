@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@900&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="./src/img/favicon.png" type="image/x-icon" />
+    <link rel="stylesheet" href="./src/css/style.css">
+    <script type="module" src="./src/js/controller.js"></script>
+    <title>Lite Springer App</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="slider">
+
+            <div class="slide"><img src="./src/img/ferromagnetism.jpg" alt=""></div>
+            <div class="slide"><img src="./src/img/laser-expt.jpg" alt=""></div>
+            <div class="slide"><img src="./src/img/plasma.jpg" alt=""></div>
+            <div class="slide"><img src="./src/img/black-hole.jpg" alt=""></div>
+            <button class="slider__btn slider__arrow-left">&larr;</button>
+            <button class="slider__btn slider__arrow-right">&rarr;</button>
+            <div class="dots"></div>
+        </div>
+        <header class="header">
+            <div class="brand"><img src="./src/img/LS-logo.png" alt="liteSpringerLogo" class="brand__logo">
+                <div class="brand__name">
+                    <div class="brand__name-first--word">Lite </div> Springer
+                </div>
+            </div>
+
+            <form class="search">
+                <input type="text" name="" class="search__field" placeholder="Search for articles...">
+                <button class="btn search__btn">
+                    <svg class="search__icon">
+                        <use href="./src/img/icons.svg#icon-search"></use>
+                    </svg>
+                    <span>Search</span>
+                </button>
+
+            </form>
+            <nav class="nav">
+                <ul class="nav__list">
+                    <li class="nav__item">
+                        <button class="nav__btn nav__btn--note-sticky">
+                            <svg class="note__sticky">
+                                <use href="./src/img/icons.svg#icon-note-sticky"></use>
+                            </svg>
+                            <span>Notes</span>
+                        </button>
+                    </li>
+                    <li class="nav__item">
+                        <button class="nav__btn nav__btn--bookmarks">
+                            <svg class="bookmark">
+                                <use href="./src/img/icons.svg#icon-bookmark"></use>
+                            </svg>
+                            <span>Bookmarks</span>
+                        </button>
+                        <div class="bookmarks">
+                            <ul class="bookmark__list">
+                                <div class="message bookmark__msg">
+                                    <div>
+                                        <svg class="face__frown">
+                                            <use href="./src/img/icons.svg#icon-face-frown">
+
+                                            </use>
+
+                                        </svg>
+                                    </div>
+                                    <p>
+                                        No bookmarks yet. Get the article you want to read and bookmark it
+                                    </p>
+                                </div>
+                                <li class="preview">
+                                    <a href="" class="preview__link">
+                                        <div class="preview__data">
+                                            <div class="preview__title">Nanoparticles: Properties, applications and
+                                                toxicities</div>
+                                            <div class="preview__creators">Khan I.Saeed K.Khan I.</div>
+                                            <div><span class="preview__publication--name">Optic express</span>
+                                                <span class="preview__publication--year">(2023)</span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+        <div class="search__results">
+            <!-- 10.1007/s00585-994-1006-3 -->
+            <!-- openaccess true : 10.1007/s40544-022-0676-8 -->
+            <!-- openaccess false : 10.1007/BF00627098,10.1007/s10845-022-01981-6,10.1007/s00107-023-01952-5 -->
+            <!-- <a href="#10.1007/s00107-023-01940-9">Article1</a> -->
+            <!-- <div class="loader__div">
+                <svg class="loader">
+                    <use href="src/img/icons.svg#icon-loader"></use>
+                </svg>
+            </div> -->
+            <ul class="results">
+
+                <!-- <li class="preview">
+                    <a href="#${result.doi}" class="preview__link">
+                        <div class="preview__data">
+                            <div class="preview__title">Nanoparticles: Properties, applications and
+                                toxicities</div>
+                            <div class="preview__creators">Khan I.Saeed K.Khan I.</div>
+                            <div><span class="preview__publication--name">Optic express</span>
+                                <span class="preview__publication--year">(2023)</span><span class="preview__doi"></span>
+                            </div>
+                            <div class="preview__abstract">This review is provided a detailed overview
+                                of the synthesis, properties and applications of nanoparticles</div>
+                        </div>
+                    </a>
+                </li> -->
+
+            </ul>
+            <div class="pagination">
+                <!-- <button class="pagination__btn pagination__btn--previous">
+                    <svg class="arrow__left">
+                        <use href="./src/img/icons.svg#icon-arrow-left"></use>
+                    </svg>
+                    <span>Page</span>
+                </button>
+                <button class="pagination__btn pagination__btn--next">
+                    <svg class="arrow__right">
+                        <use href="./src/img/icons.svg#icon-arrow-right"></use>
+                    </svg>
+                    <span>Page</span>
+                </button> -->
+            </div>
+        </div>
+        <div class="article">
+            <!-- <div class="loader__div">
+                <svg class="loader">
+                    <use href="src/img/icons.svg#icon-loader"></use>
+                </svg>
+            </div> -->
+            <!-- <div class="error">
+                <p>0 Result(s) for 'query'</p>
+                <div>
+                    <div class="error__text">
+                        <svg class="circle__exclamation">
+                            <use href="src/img/icons.svg#icon-circle-exclamation"></use>
+                        </svg>
+                        <p>Sorry, we could not find any matches for your search. Why not..</p>
+                    </div>
+                    <ul class="error__correction">
+                        <li>Make sure that all words are spelled correctly</li>
+                        <li>Try more general keywords</li>
+                        <li>Try different keywords</li>
+                    </ul>
+                </div>
+            </div> -->
+            <div class="message start__msg">
+                <div>
+                    <svg class="start__message">
+                        <use href="./src/img/icons.svg#icon-start-message
+                        ">
+                        </use>
+                    </svg>
+                </div>
+                <p>
+                    Explore the leading interdisciplinary science journal which publishes trusted research.
+                    Over 10 million scientific documents at your fingertips...
+                    Start by searching a keyword to get all the related articles.
+                </p>
+            </div>
+            <!-- <div class="article__data">
+                <div class="article__publication--type">Khan I.Saeed K.Khan I.</div>
+                <div class="article__title">Nanoparticles: Properties, applications and
+                    toxicities</div>
+                <div class="article__creators">Khan I.Saeed K.Khan I.</div>
+                <div><span class="article__publication--name">Optic express</span>
+                    <span class="article__publication--year">(2023)</span><span class="article__doi"></span>
+                </div>
+                <div class="buttons">
+                    <button class="article__bookmark nav__btn nav__btn--bookmarks">
+
+                        <svg class="bookmark">
+                            <use href="./src/img/icons.svg#icon-bookmark"></use>
+                        </svg>
+                        <span>Bookmarks</span>
+                    </button>
+                    <button class="article__notes nav__btn nav__btn--bookmarks">
+
+                        <svg class="note__sticky">
+                            <use href="./src/img/icons.svg#icon-note-sticky"></use>
+                        </svg>
+                        <span>Add notes</span>
+                    </button>
+                </div>
+            </div>
+            <div class="abstract__section">
+                <div class="heading">Abstract</div>
+                <div class="article__full--abstract">This review is provided a detailed overview
+                    of the synthesis, properties and applications of nanoparticles</div>
+            </div>
+        </div> -->
+        </div>
+
+
+</body>
+
+</html>
