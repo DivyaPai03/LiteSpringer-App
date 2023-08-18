@@ -28,6 +28,7 @@ export const loadArticle = async function (doi_first_part, doi_second_part) {
     const url = `${API_URL}api_key=${API_KEY}&q=${doi_first_part}%2F${doi_second_part}&s=1&p=${RESULTS_PER_PAGE}`;
     const data = await getJSON(url);
     console.log("loadArticle data", data);
+    console.log(data.records);
     const records = data.records[0];
 
     articleState.article = {
@@ -40,6 +41,8 @@ export const loadArticle = async function (doi_first_part, doi_second_part) {
       abstract: records.abstract,
       openAccess: records.openaccess,
     };
+    console.log(articleState.article);
+    return articleState.article;
   } catch (err) {
     throw err;
   }
@@ -53,7 +56,7 @@ export const loadSearchResults = async function (
   try {
     const url = `${API_URL}api_key=${API_KEY}&q=${q}&s=${s}&p=${RESULTS_PER_PAGE}`;
     const data = await getJSON(url);
-    // console.log("loadSearchResults data", data);
+    console.log("loadSearchResults data", data);
     articleState.search.query = q;
     articleState.search.resultIndex = s;
     articleState.search.pageIndex = p;

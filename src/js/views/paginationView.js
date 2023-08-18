@@ -19,7 +19,7 @@ class PaginationView extends View {
     );
 
     if (currentPage === 1 && numberOfPages > 1) {
-      return `<div class="previous"></div><div class="next">
+      return `<div class="previous"></div><a href="#top"><div class="next">
     <button class="pagination__btn pagination__btn--next" data-gotoresultindex="${
       resIndex + perPage
     }" data-gotopageindex="${currentPage + 1}">
@@ -28,10 +28,10 @@ class PaginationView extends View {
             <use href="${icons}#icon-arrow-right"></use>
         </svg>
         
-    </button> </div>`;
+    </button> </div></a>`;
     }
     if (currentPage < numberOfPages) {
-      return `<div class="previous"><button class="pagination__btn pagination__btn--previous" data-gotoresultindex="${
+      return `<a href="#top"><div class="previous"><button class="pagination__btn pagination__btn--previous" data-gotoresultindex="${
         resIndex - perPage
       }" data-gotopageindex="${currentPage - 1}">
         
@@ -40,8 +40,8 @@ class PaginationView extends View {
         </svg>
         <span>Page ${currentPage - 1}</span>
        
-    </button></div>
-    <div class="next">
+    </button></div></a>
+    <a href="#top"><div class="next">
     <button class="pagination__btn pagination__btn--next" data-gotoresultindex="${
       resIndex + perPage
     }" data-gotopageindex="${currentPage + 1}">
@@ -50,10 +50,10 @@ class PaginationView extends View {
             <use href="${icons}#icon-arrow-right"></use>
         </svg>
        
-    </button> </div>`;
+    </button> </div></a>`;
     }
     if (currentPage === numberOfPages && numberOfPages > 1) {
-      return `<div class="previous"><button class="pagination__btn pagination__btn--previous" data-gotoresultindex="${
+      return `<a href="#top"><div class="previous"><button class="pagination__btn pagination__btn--previous" data-gotoresultindex="${
         resIndex - perPage
       }" data-gotopageindex="${currentPage - 1}">
         
@@ -61,7 +61,7 @@ class PaginationView extends View {
             <use href="${icons}#icon-arrow-left"></use>
         </svg>
         <span>Page ${currentPage - 1}</span>
-    </button></div><div class="next"></div>`;
+    </button></div></a><div class="next"></div>`;
     }
     return "";
   }

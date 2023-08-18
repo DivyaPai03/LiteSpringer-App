@@ -5,6 +5,7 @@ import View from "./view.js";
 class ArticleView extends View {
   _parentEl = document.querySelector(".article");
   _errorMessage = `Cannot load the article you have selected. Try again!`;
+
   data;
   addHandlerRender = function (controllerFunction) {
     window.addEventListener("hashchange", controllerFunction);

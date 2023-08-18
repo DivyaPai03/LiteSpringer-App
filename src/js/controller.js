@@ -3,14 +3,16 @@ import articleView from "./views/articleView.js";
 import searchView from "./views/searchView.js";
 import resultsView from "./views/resultsView.js";
 import paginationView from "./views/paginationView.js";
+import totalResultsView from "./views/totalResultsView.js";
 if (module.hot) {
   module.hot.accept();
 }
 const controlArticles = async function () {
   try {
     const doi_first_part = window.location.hash.slice(1, 8);
-    if (!doi_first_part) return;
+    if (!doi_first_part || doi_first_part == "top") return;
     const doi_second_part = window.location.hash.slice(9);
+    resultsView.render(model.articleState.search.results);
     articleView.renderLoader();
     await model.loadArticle(doi_first_part, doi_second_part);
     articleView.render(model.articleState.article);
@@ -26,12 +28,16 @@ const controlSearch = async function () {
     resultsView.renderLoader();
     await model.loadSearchResults(query);
     // resultsView.render(model.getPage(4));
+
     resultsView.render(model.articleState.search.results);
     paginationView.render(model.articleState.search);
-  } catch (err) {}
+    totalResultsView.render(model.articleState.search);
+  } catch (err) {
+    resultsView._renderError();
+  }
 };
 const controlPagination = async function (resultIndex, pageIndex) {
-  resultsView.renderLoader();
+  // resultsView.renderLoader();
   await model.loadSearchResults(
     model.articleState.search.query,
     resultIndex,
@@ -39,6 +45,7 @@ const controlPagination = async function (resultIndex, pageIndex) {
   );
   resultsView.render(model.articleState.search.results);
   paginationView.render(model.articleState.search);
+  totalResultsView.render(model.articleState.search);
 };
 const init = function () {
   articleView.addHandlerRender(controlArticles);

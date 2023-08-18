@@ -26,7 +26,7 @@ export const getJSON = async function (url) {
       fetch(url, fetchData),
       timeout(TIMEOUT_SECONDS),
     ]);
-    console.log(res);
+    console.log("yes");
     const data = await res.json();
     if (!res.ok) throw new Error(`${res.status}`);
     return data;

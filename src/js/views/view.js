@@ -2,7 +2,7 @@ import icons from "../../img/icons.svg";
 export default class View {
   render(data) {
     if (!data || (Array.isArray(data) && data.length === 0))
-      return this._renderError();
+      throw new Error("#");
     this.data = data;
     const markup = this._createMarkup();
     this._clear();
@@ -13,7 +13,7 @@ export default class View {
   }
   _renderError(message = this._errorMessage) {
     const markup = `<div class="error">
-    <p> Result(s) for '${this.query}:('</p>
+    
     <div>
         <div class="error__text">
             <svg class="circle__exclamation">
@@ -25,7 +25,7 @@ export default class View {
     </div>
 </div>`;
     this._clear();
-    console.log(markup);
+
     this._parentEl.insertAdjacentHTML("afterbegin", markup);
   }
   renderLoader() {
@@ -34,6 +34,19 @@ export default class View {
         <use href="${icons}#icon-loader"></use>
     </svg>
 </div>`;
+    this._clear();
+    this._parentEl.insertAdjacentHTML("afterbegin", markup);
+  }
+  renderMessage() {
+    const markup = `<div class="message">
+    <p> ${this.data.length} Result(s) for ${this.data.query}:('</p>
+        <div>
+          <svg>
+            <use href="${icons}#icon-smile"></use>
+          </svg>
+        </div>
+        
+      </div>`;
     this._clear();
     this._parentEl.insertAdjacentHTML("afterbegin", markup);
   }

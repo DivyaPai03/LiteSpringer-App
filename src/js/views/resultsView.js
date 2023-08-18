@@ -9,17 +9,23 @@ class ResultsView extends View {
 </ul>`;
 
   _createMarkup() {
-    console.log("render data variable:", this.data);
     return this.data.map(this._createMarkupPreview).join("");
   }
   _createMarkupPreview(res) {
+    const id = window.location.hash.slice(1);
     return `<li class="preview">
-    <a href="#${res.doi}" class="preview__link">
+    <a href="#${res.doi}" class="preview__link ${
+      res.doi == id ? "preview__link-selected" : ""
+    }">
     <div class="preview__data">
         <div class="preview__title">${res.title}</div>
         <div class="preview__creators">${res.creator}</div>
-        <div><span class="preview__publication--name">${res.publicationName}</span>
-            <span class="preview__publication--year">(${res.publicationYear})</span><span class="preview__doi">${res.doi}</span>
+        <div><span class="preview__publication--name">${
+          res.publicationName
+        }</span>
+            <span class="preview__publication--year">(${
+              res.publicationYear
+            })</span><span class="preview__doi">${res.doi}</span>
         </div>
         <div class="preview__abstract">${res.abstract}</div>
     </div>
