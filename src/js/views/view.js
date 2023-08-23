@@ -1,26 +1,27 @@
 import icons from "../../img/icons.svg";
 export default class View {
-  render(data) {
-    if (!data || (Array.isArray(data) && data.length === 0))
-      throw new Error("#");
+  render(data, render = true) {
+    if (!data || (Array.isArray(data) && data.length === 0)) throw new Error();
     this.data = data;
     const markup = this._createMarkup();
+    if (!render) return markup;
     this._clear();
     this._parentEl.insertAdjacentHTML("afterbegin", markup);
   }
   _clear() {
     this._parentEl.innerHTML = "";
   }
-  _renderError(message = this._errorMessage) {
+  _renderError(message = this._errorMessage, renderBookmarkIcon = false) {
     const markup = `<div class="error">
     
     <div>
         <div class="error__text">
-            <svg class="circle__exclamation">
-                <use href="${icons}#icon-circle-exclamation"></use>
-            </svg>
-            <p>${message}</p>
-        </div>
+            <p><svg class="circle__exclamation">
+            <use href="${icons}#icon-${
+      renderBookmarkIcon ? "face-frown" : "circle-exclamation"
+    }"></use>
+        </svg>${message}</p></div>
+        
         
     </div>
 </div>`;
@@ -49,5 +50,31 @@ export default class View {
       </div>`;
     this._clear();
     this._parentEl.insertAdjacentHTML("afterbegin", markup);
+  }
+
+  update(data) {
+    this.data = data;
+    const virtualMarkup = this._createMarkup();
+    const virtualDOM = document
+      .createRange()
+      .createContextualFragment(virtualMarkup);
+    const virtualElements = Array.from(virtualDOM.querySelectorAll("*"));
+    const realElements = Array.from(this._parentEl.querySelectorAll("*"));
+    virtualElements.forEach((virtualEl, i) => {
+      const realEl = realElements[i];
+      //   updating the changed text
+      if (
+        !virtualEl.isEqualNode(realEl) &&
+        virtualEl.firstChild?.nodeValue.trim() !== ""
+      ) {
+        realEl.textContent = virtualEl.textContent;
+      }
+      //  updating the changed attributes
+      if (!virtualEl.isEqualNode(realEl)) {
+        Array.from(virtualEl.attributes).forEach((attribute) => {
+          realEl.setAttribute(attribute.name, attribute.value);
+        });
+      }
+    });
   }
 }

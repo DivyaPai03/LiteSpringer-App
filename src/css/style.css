@@ -37,8 +37,7 @@ body {
 .container {
   max-width: 110rem;
   min-height: calc(100vh - 2 * 2vh);
-  margin: 2vh;
-  box-sizing: content-box;
+
   background-color: #fff;
   border-radius: 10px;
   overflow: hidden;
@@ -207,6 +206,7 @@ svg {
 }
 .note__sticky,
 .bookmark,
+.bookmark-fill,
 .face__frown,
 .arrow__left,
 .arrow__right,
@@ -215,6 +215,10 @@ svg {
 .download {
   fill: var(--color-secondary);
   transform: translateY(-1px);
+}
+.bookmark-fill,
+.circle__exclamation {
+  font-size: 1.5rem;
 }
 .arrow__left,
 .arrow__right {
@@ -275,7 +279,7 @@ svg {
 .preview__link {
   text-decoration: none;
   display: block;
-  padding: 1rem;
+  padding: 0.5rem 1rem;
 }
 .preview__link-selected {
   background-color: #c6dee8;
@@ -308,14 +312,14 @@ svg {
 .search__results {
   grid-area: articleList;
   font-size: var(--medium-font-size);
-  height: 100vh;
+  max-height: 68vh;
   overflow-y: scroll;
 }
 .preview {
   list-style: none;
   box-shadow: 0 0.3rem 0.8rem var(--color-shadow);
 
-  margin-bottom: 1rem;
+  margin-bottom: 0.2rem;
 }
 
 .pagination {
@@ -377,10 +381,15 @@ svg {
   background-color: #fff;
   box-shadow: 0 0.3rem 0.8rem var(--color-shadow);
   width: 100%;
-  padding: 1rem;
+  padding: 0 1rem;
 }
 .circle__exclamation {
   fill: var(--color-alert);
+}
+.total__results {
+  margin-top: 1rem;
+  padding: 0 2rem;
+  font-size: var(--large-font-size);
 }
 .error {
   display: flex;
@@ -389,12 +398,14 @@ svg {
   font-size: var(--large-font-size);
   color: var(--color-dark);
   padding: 0 2rem;
+  height: 15rem;
+  justify-content: center;
 }
 .error__text {
   display: flex;
-  row-gap: 2rem;
   flex-direction: column;
 }
+
 .error__correction li {
   font-size: var(--medium-font-size);
   padding: 1rem auto;

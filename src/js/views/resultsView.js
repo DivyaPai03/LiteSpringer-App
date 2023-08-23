@@ -1,4 +1,5 @@
 import View from "./view.js";
+import PreviewMarkupView from "./previewMarkupView.js";
 class ResultsView extends View {
   _parentEl = document.querySelector(".results");
   _errorMessage = `Sorry, we could not find any matches for your search. Why not..
@@ -9,28 +10,9 @@ class ResultsView extends View {
 </ul>`;
 
   _createMarkup() {
-    return this.data.map(this._createMarkupPreview).join("");
-  }
-  _createMarkupPreview(res) {
-    const id = window.location.hash.slice(1);
-    return `<li class="preview">
-    <a href="#${res.doi}" class="preview__link ${
-      res.doi == id ? "preview__link-selected" : ""
-    }">
-    <div class="preview__data">
-        <div class="preview__title">${res.title}</div>
-        <div class="preview__creators">${res.creator}</div>
-        <div><span class="preview__publication--name">${
-          res.publicationName
-        }</span>
-            <span class="preview__publication--year">(${
-              res.publicationYear
-            })</span><span class="preview__doi">${res.doi}</span>
-        </div>
-        <div class="preview__abstract">${res.abstract}</div>
-    </div>
-    </a>
-    </li> `;
+    return this.data
+      .map((result) => PreviewMarkupView.render(result, false))
+      .join("");
   }
 }
 export default new ResultsView();

@@ -10,6 +10,13 @@ class ArticleView extends View {
   addHandlerRender = function (controllerFunction) {
     window.addEventListener("hashchange", controllerFunction);
   };
+  addHandlerBookmark = function (controllerFunction) {
+    this._parentEl.addEventListener("click", function (e) {
+      const btnClicked = e.target.closest(".article__bookmark");
+      if (!btnClicked) return;
+      controllerFunction();
+    });
+  };
 
   _createMarkup() {
     // console.log(this.data.title);
@@ -42,18 +49,14 @@ class ArticleView extends View {
     <div class="buttons">
         <button class=" nav__btn  article__bookmark ">
 
-            <svg class="bookmark">
-                <use href="${icons}#icon-bookmark"></use>
+            <svg class="bookmark bookmark-fill">
+                <use href="${icons}#icon-bookmark${
+      this.data.bookmarkValue ? "-fill" : ""
+    }"></use>
             </svg>
-            <span>Bookmarks</span>
+            <span>Bookmark</span>
         </button>
-        <button class="article__notes nav__btn ">
 
-            <svg class="note__sticky">
-                <use href="${icons}#icon-note-sticky"></use>
-            </svg>
-            <span>Add notes</span>
-        </button>
         <div>${this.data.openAccess == "true" ? download__btn : buy__link}</div>
 
     </div>
@@ -66,3 +69,10 @@ class ArticleView extends View {
   }
 }
 export default new ArticleView();
+/*        <button class="article__notes nav__btn ">
+
+            <svg class="note__sticky">
+                <use href="${icons}#icon-note-sticky"></use>
+            </svg>
+            <span>Add notes</span>
+        </button> */
