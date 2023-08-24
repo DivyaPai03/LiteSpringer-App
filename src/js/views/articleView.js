@@ -20,7 +20,7 @@ class ArticleView extends View {
 
   _createMarkup() {
     // console.log(this.data.title);
-    const buy__link = `<a href="${BUYARTICLE_URL}${this.data.doi}" target="_blank">Buy Article</a>`;
+    const buy__link = `<button class=" nav__btn ><a href="${BUYARTICLE_URL}${this.data.doi}" target="_blank">Buy Article</a>`;
     const download__btn = `<a href="${DOWNLOAD_ARTICLE_PDF_URL}id=doi:${this.data.doi}" target="_blank" class="download_link"><button class=" nav__btn  article__download ">
     <span>Download pdf</span>
     <svg class="download">

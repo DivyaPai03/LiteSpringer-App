@@ -35,7 +35,6 @@ body {
   scroll-behavior: smooth;
 }
 .container {
-  max-width: 110rem;
   min-height: calc(100vh - 2 * 2vh);
 
   background-color: #fff;
@@ -51,6 +50,7 @@ body {
     "header header"
     "articleList article"
     "copyright copyright";
+  margin-bottom: 0;
 }
 /* BANNER */
 .slider {
@@ -312,13 +312,16 @@ svg {
 .search__results {
   grid-area: articleList;
   font-size: var(--medium-font-size);
-  max-height: 68vh;
+  /* max-height: 68vh;
+  overflow-y: scroll; */
+}
+.results {
+  max-height: 70vh;
   overflow-y: scroll;
 }
 .preview {
   list-style: none;
   box-shadow: 0 0.3rem 0.8rem var(--color-shadow);
-
   margin-bottom: 0.2rem;
 }
 
@@ -524,14 +527,18 @@ svg {
 }
 @media (max-width: 767px) {
   .container {
-    grid-template-rows: 8rem 8.5rem auto auto;
-    grid-template-columns: 0.5fr 2fr;
+    grid-template-rows: 8rem 8.5rem auto auto 2rem;
+    grid-template-columns: 100vw;
     row-gap: 0.2rem;
     grid-template-areas:
-      "banner banner"
-      "header header"
-      "articleList articleList"
-      "article article";
+      "banner"
+      "header"
+      "articleList"
+      "article"
+      "copyright";
+  }
+  .search__results {
+    overflow-y: scroll;
   }
   .brand__logo {
     height: 3rem;
@@ -548,6 +555,7 @@ svg {
   .nav__btn {
     font-size: var(--small-font-size);
   }
+
   .message,
   .error,
   .article__data {
