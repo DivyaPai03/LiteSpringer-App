@@ -138,12 +138,12 @@ Software used in the project and the way to install them are given below.
   ```sh
   npm i parcel
   ```
-* ### core-js[![Core.js][core.js]][core.js-url]
+* ### core-js [![Core.js][core.js]][core.js-url]
 
   ```sh
   npm i core-js 
   ```
-* ### regenerator-runtime[![Regenerator-runtime][regenerator-runtime]][regenerator-runtime-url]
+* ### regenerator-runtime [![Regenerator-runtime][regenerator-runtime]][regenerator-runtime-url]
   ```sh
   npm i regenerator-runtime
   ```
