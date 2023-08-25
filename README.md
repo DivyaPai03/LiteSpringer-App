@@ -128,22 +128,22 @@ Init function passes the respective functions in the controller as handler funct
 ## Getting Started
 ### Prerequisites
 Software used in the project and the way to install them are given below.
-* [![Npm][npm]][npm-url]
+* ### npm [![Npm][npm]][npm-url]
 
   ```sh
   npm install npm@latest -g
   ```
-* ###Parcel [![Parcel][parcel]][parcel-url]
+* ### Parcel [![Parcel][parcel]][parcel-url]
 
   ```sh
   npm i parcel
   ```
-* ###core-js[![Core.js][core.js]][core.js-url]
+* ### core-js[![Core.js][core.js]][core.js-url]
 
   ```sh
   npm i core-js 
   ```
-* ###regenerator-runtime[![Regenerator-runtime][regenerator-runtime]][regenerator-runtime-url]
+* ### regenerator-runtime[![Regenerator-runtime][regenerator-runtime]][regenerator-runtime-url]
   ```sh
   npm i regenerator-runtime
   ```
