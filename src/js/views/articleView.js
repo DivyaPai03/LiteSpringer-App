@@ -7,9 +7,11 @@ class ArticleView extends View {
   _errorMessage = `Cannot load the article you have selected. Try again!`;
 
   data;
-  addHandlerRender = function (controllerFunction) {
-    window.addEventListener("hashchange", controllerFunction);
-  };
+  addHandlerRender(controllerFunction) {
+    ["hashchange", "load"].forEach((event) =>
+      window.addEventListener(event, controllerFunction),
+    );
+  }
   addHandlerBookmark = function (controllerFunction) {
     this._parentEl.addEventListener("click", function (e) {
       const btnClicked = e.target.closest(".article__bookmark");
